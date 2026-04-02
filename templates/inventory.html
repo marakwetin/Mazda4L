@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Mazda Inventory in Mombasa | AutoElite{% endblock %}
+{% block meta_description %}Browse luxury Mazda inventory in Mombasa with smart filters, comparison tools, and editorial detail pages for each model at AutoElite.{% endblock %}
+{% block meta_keywords %}Mazda inventory Mombasa, Mazda CX-60 Mombasa, Mazda CX-90 Kenya, AutoElite inventory{% endblock %}
+
+{% block body_attrs %}
+x-data="inventoryExperience({
+    cars: {{ cars | tojson }},
+    initialQuery: {{ initial_query | tojson }}
+})"
+{% endblock %}
+
+{% block content %}
+<main class="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 pb-12 pt-8 lg:px-10 lg:pb-16">
+    {% if message %}
+        <div class="notice-pill">{{ message }}</div>
+    {% endif %}
+
+    {% if featured_car %}
+        <section class="hero-shell">
+            <div class="hero-copy-stack">
+                <p class="eyebrow">Luxury Inventory</p>
+                <h1 class="headline mt-4">Mazda, curated like a private collection.</h1>
+                <p class="subheadline mt-5 max-w-2xl">
+                    Deep Ink surfaces, disciplined gold structure, and a showroom where each Mazda gets a proper detail page, finance view, and comparison lane.
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center gap-4">
+                    <a href="#inventory" class="primary-action">Browse Inventory</a>
+                    <a href="/build/{{ featured_car.id }}" class="secondary-action">Build Featured Mazda</a>
+                </div>
+
+                <dl class="mt-10 grid gap-4 sm:grid-cols-3">
+                    <div class="metric-panel">
+                        <dt>Featured</dt>
+                        <dd>{{ featured_car.model_name }}</dd>
+                    </div>
+                    <div class="metric-panel">
+                        <dt>Exterior</dt>
+                        <dd>{{ featured_car.exterior_color }}</dd>
+                    </div>
+                    <div class="metric-panel">
+                        <dt>Certified</dt>
+                        <dd>{% if featured_car.certified_provenance %}Yes{% else %}No{% endif %}</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <a href="/inventory/{{ featured_car.id }}" class="feature-panel">
+                <div class="feature-image-shell">
+                    {% if featured_car.primary_image %}
+                        <img src="{{ featured_car.primary_image }}" alt="{{ featured_car.model_name }}" class="cover-image">
+                    {% else %}
+                        <div class="empty-image-shell">No image</div>
+                    {% endif %}
+                </div>
+                <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <p class="eyebrow">Featured Vehicle</p>
+                        <h2 class="section-title mt-3">{{ featured_car.model_name }}</h2>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs uppercase tracking-[0.32em] text-gold/70">{{ featured_car.year }} / {{ featured_car.body_style }}</p>
+                        <p class="mt-2 text-lg font-semibold text-mist">{{ featured_car.price_label }}</p>
+                    </div>
+                </div>
+            </a>
+        </section>
+    {% endif %}
+
+    <section id="inventory" class="grid gap-6 lg:grid-cols-[280px,minmax(0,1fr)]">
+        <aside class="filter-sidebar">
+            <div class="luxury-card sticky top-28">
+                <p class="eyebrow">Smart Filter</p>
+                <h2 class="section-title mt-3">Find the right Mazda faster</h2>
+
+                <div class="mt-8 grid gap-5">
+                    <label class="form-field">
+                        <span>Year</span>
+                        <select x-model="selectedYear">
+                            <option value="">All Years</option>
+                            {% for year in filter_options.years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        <span>Body Style</span>
+                        <select x-model="selectedBodyStyle">
+                            <option value="">All Styles</option>
+                            {% for style in filter_options.body_styles %}
+                                <option value="{{ style }}">{{ style }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        <span>Transmission</span>
+                        <select x-model="selectedTransmission">
+                            <option value="">All Transmissions</option>
+                            {% for transmission in filter_options.transmissions %}
+                                <option value="{{ transmission }}">{{ transmission }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+                    <button type="button" class="secondary-action justify-center" @click="resetFilters()">Reset Filters</button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="grid gap-6">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                    <p class="eyebrow">Inventory</p>
+                    <h2 class="section-title mt-3">Filtered performance gallery</h2>
+                </div>
+                <p class="text-sm leading-7 text-white/58">
+                    <span x-text="filteredCars.length"></span> cars match your current filters.
+                </p>
+            </div>
+
+            <div class="inventory-grid">
+                <template x-for="car in filteredCars" :key="car.id">
+                    <article class="inventory-card">
+                        <div class="card-media aspect-[16/10]">
+                            <template x-if="car.primary_image">
+                                <img :src="car.primary_image" :alt="car.model_name" class="cover-image">
+                            </template>
+                            <template x-if="!car.primary_image">
+                                <div class="empty-image-shell">No image</div>
+                            </template>
+                            <span x-show="car.certified_provenance" class="provenance-badge">Certified Provenance</span>
+                        </div>
+
+                        <div class="p-5">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <p class="text-xs uppercase tracking-[0.3em] text-gold/78" x-text="car.year + ' / ' + car.body_style"></p>
+                                    <h3 class="mt-4 text-2xl font-semibold text-white" x-text="car.model_name"></h3>
+                                </div>
+                                <p class="text-sm font-semibold text-mist" x-text="car.price_label"></p>
+                            </div>
+
+                            <p class="mt-4 text-sm leading-7 text-white/60" x-text="car.headline"></p>
+
+                            <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="spec-label">Engine</dt>
+                                    <dd class="spec-value !text-base" x-text="car.engine_type"></dd>
+                                </div>
+                                <div>
+                                    <dt class="spec-label">Transmission</dt>
+                                    <dd class="spec-value !text-base" x-text="car.transmission"></dd>
+                                </div>
+                                <div>
+                                    <dt class="spec-label">Mileage</dt>
+                                    <dd class="spec-value !text-base" x-text="car.mileage_km.toLocaleString() + ' km'"></dd>
+                                </div>
+                                <div>
+                                    <dt class="spec-label">Color</dt>
+                                    <dd class="spec-value !text-base" x-text="car.exterior_color"></dd>
+                                </div>
+                            </dl>
+
+                            <div class="mt-8 flex flex-wrap items-center gap-3">
+                                <a :href="'/inventory/' + car.id" class="primary-action">View Detail Page</a>
+                                <a :href="'/build/' + car.id" class="secondary-action">Open Configurator</a>
+                                <button
+                                    type="button"
+                                    class="secondary-action"
+                                    :class="{ 'compare-active': isCompared(car.id) }"
+                                    @click="toggleCompare(car.id)"
+                                >
+                                    <span x-text="isCompared(car.id) ? 'Selected' : 'Compare'"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <div x-show="filteredCars.length === 0" class="luxury-card" x-cloak>
+                <p class="eyebrow">No Matches</p>
+                <h3 class="section-title mt-3">No cars fit the current filters</h3>
+                <p class="mt-4 text-sm leading-7 text-white/60">
+                    Try widening the year, body style, or transmission filters.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="luxury-card">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <p class="eyebrow">Comparison Engine</p>
+                <h2 class="section-title mt-3">Compare two Mazda models side-by-side</h2>
+            </div>
+            <p class="max-w-md text-sm leading-7 text-white/58">
+                Select up to two vehicles from the inventory cards above. The spec table updates instantly below.
+            </p>
+        </div>
+
+        <div x-show="comparedCars.length < 2" class="mt-8 rounded-sm border border-dashed border-gold/18 px-5 py-8 text-sm text-white/52" x-cloak>
+            Select two inventory cards to open the gold-lined comparison table.
+        </div>
+
+        <div x-show="comparedCars.length === 2" class="mt-8 overflow-x-auto" x-cloak>
+            <table class="comparison-table min-w-full">
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+                        <th x-text="comparedCars[0]?.model_name"></th>
+                        <th x-text="comparedCars[1]?.model_name"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="row in comparisonRows()" :key="row.label">
+                        <tr>
+                            <td x-text="row.label"></td>
+                            <td x-text="row.left"></td>
+                            <td x-text="row.right"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}

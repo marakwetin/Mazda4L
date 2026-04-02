@@ -1,0 +1,14 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<rect x="160" y="120" width="1280" height="760" stroke="#C6A55C" stroke-opacity=".18"/>
+<path d="M270 678C458 490 654 390 986 332C1076 316 1162 322 1330 344" stroke="url(#a)" stroke-width="170" stroke-linecap="round"/>
+<path d="M920 400C996 392 1074 404 1172 432" stroke="#F4EFE3" stroke-opacity=".2" stroke-width="10" stroke-linecap="round"/>
+<circle cx="1142" cy="584" r="54" fill="#FFD8A2" fill-opacity=".16"/>
+<text x="184" y="228" fill="#F4EFE3" font-family="Georgia, serif" font-size="62">Soul Red Paint Detail</text>
+<text x="184" y="282" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">CLOSE SURFACE / HIGH-GLOSS CURVATURE</text>
+<defs>
+<linearGradient id="a" x1="282" y1="658" x2="1260" y2="372" gradientUnits="userSpaceOnUse">
+<stop stop-color="#400B12"/><stop offset=".34" stop-color="#A1121E"/><stop offset=".62" stop-color="#D12B3E"/><stop offset="1" stop-color="#5C1118"/>
+</linearGradient>
+</defs>
+</svg>

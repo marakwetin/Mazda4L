@@ -1,0 +1,90 @@
+<svg width="1600" height="1080" viewBox="0 0 1600 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="180" y1="96" x2="1360" y2="980" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E0E0E"/>
+      <stop offset="0.48" stop-color="#050505"/>
+      <stop offset="1" stop-color="#0B0B0B"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="180" y1="120" x2="1400" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8C6A2F"/>
+      <stop offset="0.52" stop-color="#D9BC7A"/>
+      <stop offset="1" stop-color="#7A5A25"/>
+    </linearGradient>
+    <linearGradient id="paint" x1="282" y1="469" x2="1224" y2="746" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F1F1F"/>
+      <stop offset="0.23" stop-color="#4B4B4B"/>
+      <stop offset="0.48" stop-color="#8B1624"/>
+      <stop offset="0.65" stop-color="#5E0F18"/>
+      <stop offset="1" stop-color="#202020"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="676" y1="343" x2="1048" y2="566" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7C7A1" stop-opacity="0.42"/>
+      <stop offset="0.48" stop-color="#53606C" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#0D1118" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="floorGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(788 822) rotate(90) scale(102 560)">
+      <stop stop-color="#C6A55C" stop-opacity="0.3"/>
+      <stop offset="0.48" stop-color="#A1121E" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="106" y="640" width="1336" height="252" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="soft" x="224" y="246" width="1148" height="452" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1080" fill="url(#bg)"/>
+
+  <g opacity="0.7">
+    <path d="M108 142H1492" stroke="url(#goldLine)" stroke-width="1"/>
+    <path d="M108 934H1492" stroke="url(#goldLine)" stroke-width="1" opacity="0.24"/>
+    <path d="M180 96V984" stroke="#C6A55C" stroke-opacity="0.18" stroke-width="1"/>
+    <path d="M1420 96V984" stroke="#C6A55C" stroke-opacity="0.18" stroke-width="1"/>
+  </g>
+
+  <g opacity="0.6">
+    <path d="M312 206H1274" stroke="#C6A55C" stroke-opacity="0.08" stroke-width="1"/>
+    <path d="M312 292H1274" stroke="#C6A55C" stroke-opacity="0.06" stroke-width="1"/>
+    <path d="M312 378H1274" stroke="#C6A55C" stroke-opacity="0.06" stroke-width="1"/>
+  </g>
+
+  <ellipse cx="790" cy="824" rx="558" ry="96" fill="url(#floorGlow)"/>
+  <g filter="url(#blur)">
+    <ellipse cx="794" cy="774" rx="452" ry="44" fill="#000000" fill-opacity="0.56"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <path d="M326 650C352 632 404 622 468 616L572 520C604 490 654 470 730 460L964 430C1022 423 1092 448 1146 484L1280 576C1310 598 1324 625 1316 648L1266 654C1234 624 1198 608 1156 602C1094 592 1030 590 966 590H504C430 590 370 610 328 650H326Z" fill="url(#paint)"/>
+  </g>
+
+  <path d="M330 654C356 630 408 616 470 610L578 514C616 480 662 460 734 452L968 422C1028 414 1098 440 1154 478L1288 570C1320 594 1334 628 1322 652C1310 676 1282 688 1236 688H404C360 688 334 678 326 658L330 654Z" fill="url(#paint)"/>
+  <path d="M612 510C654 478 704 462 760 456L948 432C1002 425 1066 444 1112 476L1184 526C1168 540 1148 548 1122 548H636C614 548 600 536 612 510Z" fill="url(#glass)"/>
+  <path d="M508 610H1024C1110 610 1180 616 1234 632" stroke="#F6F0E4" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M564 518H1190" stroke="#F7E9C4" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M1030 478C1072 488 1108 506 1140 536" stroke="#D0B16A" stroke-opacity="0.35" stroke-width="2"/>
+  <path d="M420 700H1286" stroke="#C6A55C" stroke-opacity="0.12" stroke-width="3"/>
+
+  <g>
+    <circle cx="560" cy="694" r="98" fill="#0B0B0B" stroke="#87642A" stroke-width="3"/>
+    <circle cx="560" cy="694" r="62" fill="#141414" stroke="#C6A55C" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="1102" cy="694" r="98" fill="#0B0B0B" stroke="#87642A" stroke-width="3"/>
+    <circle cx="1102" cy="694" r="62" fill="#141414" stroke="#C6A55C" stroke-opacity="0.35" stroke-width="2"/>
+  </g>
+
+  <path d="M1232 594L1298 606" stroke="#A1121E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M308 652C322 620 350 596 386 582" stroke="#E7D29E" stroke-opacity="0.42" stroke-width="3" stroke-linecap="round"/>
+
+  <g opacity="0.85">
+    <text x="328" y="264" fill="#F4EFE3" fill-opacity="0.94" font-family="Georgia, 'Times New Roman', serif" font-size="70" letter-spacing="-1.8">
+      Mazda CX-60
+    </text>
+    <text x="328" y="324" fill="#C6A55C" fill-opacity="0.84" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">
+      EDITORIAL PERFORMANCE STUDY
+    </text>
+  </g>
+
+  <path d="M1318 218C1266 200 1206 190 1140 190" stroke="#C6A55C" stroke-opacity="0.24" stroke-width="2"/>
+  <path d="M1326 230H1182" stroke="#C6A55C" stroke-opacity="0.18" stroke-width="2"/>
+</svg>

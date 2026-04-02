@@ -1,0 +1,19 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<rect x="108" y="110" width="1384" height="780" stroke="#C6A55C" stroke-opacity=".24"/>
+<ellipse cx="794" cy="760" rx="468" ry="70" fill="#071018"/>
+<path d="M354 626L500 494C562 442 634 416 712 410L948 386C1032 376 1116 404 1182 450L1310 548C1360 588 1348 656 1280 656H416C354 656 330 652 334 636L354 626Z" fill="url(#a)"/>
+<circle cx="560" cy="666" r="88" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<circle cx="1106" cy="666" r="88" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<path d="M612 468H1094C1144 468 1190 492 1226 540H632C608 540 598 510 612 468Z" fill="url(#b)"/>
+<text x="170" y="230" fill="#F4EFE3" font-family="Georgia, serif" font-size="64">Mazda CX Touring SUV</text>
+<text x="170" y="286" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">DEEP CRYSTAL BLUE / EVENING LIGHT</text>
+<defs>
+<linearGradient id="a" x1="360" y1="420" x2="1180" y2="710" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1F252D"/><stop offset=".34" stop-color="#254A7A"/><stop offset=".66" stop-color="#1D3252"/><stop offset="1" stop-color="#1A1A1A"/>
+</linearGradient>
+<linearGradient id="b" x1="696" y1="434" x2="1128" y2="548" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D4C29D" stop-opacity=".4"/><stop offset=".52" stop-color="#667688" stop-opacity=".22"/><stop offset="1" stop-color="#10151F" stop-opacity=".08"/>
+</linearGradient>
+</defs>
+</svg>

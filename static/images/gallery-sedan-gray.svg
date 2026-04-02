@@ -1,0 +1,19 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<path d="M120 164H1480" stroke="#C6A55C" stroke-opacity=".24"/>
+<ellipse cx="790" cy="770" rx="440" ry="62" fill="#0F0F11"/>
+<path d="M378 634L514 544C554 516 620 488 706 480L944 454C1014 448 1082 476 1140 522L1228 592C1258 616 1242 660 1182 660H432C390 660 366 654 362 642L378 634Z" fill="url(#a)"/>
+<circle cx="572" cy="670" r="82" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<circle cx="1070" cy="670" r="82" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<path d="M618 520H1072C1108 520 1144 540 1172 576H650C624 576 610 556 618 520Z" fill="url(#b)"/>
+<text x="168" y="226" fill="#F4EFE3" font-family="Georgia, serif" font-size="64">Mazda3 Sedan</text>
+<text x="168" y="282" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">MACHINE GRAY / STUDIO PROFILE</text>
+<defs>
+<linearGradient id="a" x1="390" y1="470" x2="1140" y2="700" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2D2D2D"/><stop offset=".45" stop-color="#6A6A6A"/><stop offset=".74" stop-color="#404040"/><stop offset="1" stop-color="#1E1E1E"/>
+</linearGradient>
+<linearGradient id="b" x1="690" y1="492" x2="1120" y2="580" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CDB992" stop-opacity=".38"/><stop offset=".56" stop-color="#6D7783" stop-opacity=".18"/><stop offset="1" stop-color="#0F141B" stop-opacity=".06"/>
+</linearGradient>
+</defs>
+</svg>

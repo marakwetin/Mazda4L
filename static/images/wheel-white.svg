@@ -1,0 +1,21 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="320" rx="32" fill="#060606"/>
+  <circle cx="160" cy="160" r="118" fill="url(#rim)" stroke="#C6A55C" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="160" cy="160" r="84" fill="#EDE7D7" fill-opacity="0.94" stroke="#F8F4EA" stroke-opacity="0.7" stroke-width="3"/>
+  <circle cx="160" cy="160" r="24" fill="#B8A88A"/>
+  <g stroke="#FCFAF3" stroke-width="8" stroke-linecap="round">
+    <path d="M160 84V236"/>
+    <path d="M84 160H236"/>
+    <path d="M106.3 106.3L213.7 213.7"/>
+    <path d="M213.7 106.3L106.3 213.7"/>
+    <path d="M128 95L192 225"/>
+    <path d="M95 192L225 128"/>
+  </g>
+  <circle cx="160" cy="160" r="54" stroke="#C6A55C" stroke-opacity="0.3" stroke-width="2"/>
+  <defs>
+    <radialGradient id="rim" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 160) rotate(90) scale(118)">
+      <stop stop-color="#F7F2E7"/>
+      <stop offset="1" stop-color="#B7A586"/>
+    </radialGradient>
+  </defs>
+</svg>

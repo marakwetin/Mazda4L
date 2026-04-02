@@ -1,0 +1,358 @@
+{
+  "cars": [
+    {
+      "id": "cx-90",
+      "model_name": "Mazda CX-90",
+      "year": 2025,
+      "engine_type": "e-Skyactiv PHEV",
+      "mileage_km": 14200,
+      "exterior_color": "Soul Red Crystal",
+      "body_style": "SUV",
+      "transmission": "Automatic",
+      "base_price": 7850000,
+      "availability": "Certified Used",
+      "headline": "Three-row flagship with long-haul authority.",
+      "summary": "The CX-90 is the formal side of Mazda luxury. Quiet cabin tuning, layered red paint, and enough electrified torque to feel heavy only in the right ways.",
+      "certified_provenance": true,
+      "featured": false,
+      "images": [],
+      "specs": {
+        "horsepower": 323,
+        "torque_nm": 500,
+        "zero_to_hundred_s": 6.4,
+        "drivetrain": "AWD",
+        "range_estimate": "42 km EV / 760 km combined",
+        "seats": 7
+      },
+      "configurator_variants": [
+        {
+          "id": "inline6-gas",
+          "name": "3.3L Turbo Inline-6",
+          "engine_type": "e-Skyactiv G",
+          "fuel": "Gasoline",
+          "horsepower": 323,
+          "torque_nm": 460,
+          "zero_to_hundred_s": 6.1,
+          "range_estimate": "760 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 0,
+          "summary": "The cleanest balance of straight-six presence, torque delivery, and quiet touring manners."
+        },
+        {
+          "id": "turbo-diesel",
+          "name": "3.3L Turbo Diesel",
+          "engine_type": "e-Skyactiv D",
+          "fuel": "Diesel",
+          "horsepower": 299,
+          "torque_nm": 550,
+          "zero_to_hundred_s": 7.4,
+          "range_estimate": "980 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 170000,
+          "summary": "Long-range torque and low-effort highway speed tuned for Kenya's distance-heavy driving."
+        },
+        {
+          "id": "phev",
+          "name": "2.5L PHEV",
+          "engine_type": "e-Skyactiv PHEV",
+          "fuel": "PHEV",
+          "horsepower": 323,
+          "torque_nm": 500,
+          "zero_to_hundred_s": 6.4,
+          "range_estimate": "42 km EV / 760 km combined",
+          "drivetrain": "AWD",
+          "price_delta": 260000,
+          "summary": "The sharpest launch and the quietest low-speed character in the CX family configuration lane."
+        }
+      ]
+    },
+    {
+      "id": "mazda-cx-60",
+      "model_name": "Mazda CX-60",
+      "year": 2024,
+      "engine_type": "Skyactiv-D Inline-6",
+      "mileage_km": 26700,
+      "exterior_color": "Deep Crystal Blue",
+      "body_style": "SUV",
+      "transmission": "Automatic",
+      "base_price": 6480000,
+      "availability": "Available Now",
+      "headline": "Rear-drive stance in a more intimate luxury SUV.",
+      "summary": "The CX-60 carries the long-hood, rear-drive proportion with less mass than the CX-90. It is quieter than it looks, sharper than it needs to be, and still deeply Mazda.",
+      "certified_provenance": true,
+      "featured": true,
+      "images": [
+        "/static/uploads/e511294adc814c718302d8a96baa4a21.jpg",
+        "/static/uploads/420ce353c4224647a5da7df065a91228.jpg",
+        "/static/uploads/bc274af193624594828125eb0c402847.jpg",
+        "/static/uploads/4783d0d38abc41f29767b71f34290e75.jpg",
+        "/static/uploads/41f740df04894fe699fea67fe6084feb.jpg",
+        "/static/uploads/094d2cc1191d4190915165d7f9cae588.jpg"
+      ],
+      "specs": {
+        "horsepower": 254,
+        "torque_nm": 550,
+        "zero_to_hundred_s": 7.4,
+        "drivetrain": "AWD",
+        "range_estimate": "980 km est.",
+        "seats": 5
+      },
+      "configurator_variants": [
+        {
+          "id": "inline6-gas",
+          "name": "3.3L Turbo Inline-6",
+          "engine_type": "e-Skyactiv G",
+          "fuel": "Gasoline",
+          "horsepower": 280,
+          "torque_nm": 510,
+          "zero_to_hundred_s": 7.1,
+          "range_estimate": "760 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 0,
+          "summary": "The cleanest balance of straight-six presence, torque delivery, and quiet touring manners."
+        },
+        {
+          "id": "turbo-diesel",
+          "name": "3.3L Turbo Diesel",
+          "engine_type": "e-Skyactiv D",
+          "fuel": "Diesel",
+          "horsepower": 254,
+          "torque_nm": 550,
+          "zero_to_hundred_s": 7.4,
+          "range_estimate": "980 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 170000,
+          "summary": "Long-range torque and low-effort highway speed tuned for Kenya's distance-heavy driving."
+        },
+        {
+          "id": "phev",
+          "name": "2.5L PHEV",
+          "engine_type": "e-Skyactiv PHEV",
+          "fuel": "PHEV",
+          "horsepower": 323,
+          "torque_nm": 550,
+          "zero_to_hundred_s": 6.4,
+          "range_estimate": "42 km EV / 760 km combined",
+          "drivetrain": "AWD",
+          "price_delta": 260000,
+          "summary": "The sharpest launch and the quietest low-speed character in the CX family configuration lane."
+        }
+      ]
+    },
+    {
+      "id": "mazda3-sedan",
+      "model_name": "Mazda3 Sedan",
+      "year": 2023,
+      "engine_type": "Skyactiv-G 2.0",
+      "mileage_km": 33800,
+      "exterior_color": "Machine Gray Metallic",
+      "body_style": "Sedan",
+      "transmission": "Automatic",
+      "base_price": 3290000,
+      "availability": "Certified Used",
+      "headline": "Compact sedan form with a more expensive eye for detail.",
+      "summary": "The Mazda3 Sedan reads understated until the light hits the surfacing. This one leans into the premium brief with disciplined proportions and a calm highway ride.",
+      "certified_provenance": true,
+      "featured": false,
+      "images": [],
+      "specs": {
+        "horsepower": 186,
+        "torque_nm": 240,
+        "zero_to_hundred_s": 8.1,
+        "drivetrain": "FWD",
+        "range_estimate": "670 km est.",
+        "seats": 5
+      },
+      "configurator_variants": [
+        {
+          "id": "skyactiv-g",
+          "name": "Skyactiv-G 2.0",
+          "engine_type": "Skyactiv-G 2.0",
+          "fuel": "Gasoline",
+          "horsepower": 186,
+          "torque_nm": 240,
+          "zero_to_hundred_s": 8.1,
+          "range_estimate": "670 km est.",
+          "drivetrain": "FWD",
+          "price_delta": 0,
+          "summary": "The most straightforward sedan tune, balanced for daily use and premium restraint."
+        },
+        {
+          "id": "skyactiv-x",
+          "name": "Skyactiv-X Mild Hybrid",
+          "engine_type": "Skyactiv-X",
+          "fuel": "Mild Hybrid",
+          "horsepower": 190,
+          "torque_nm": 240,
+          "zero_to_hundred_s": 7.8,
+          "range_estimate": "720 km est.",
+          "drivetrain": "FWD",
+          "price_delta": 190000,
+          "summary": "Sharper combustion efficiency and a cleaner power delivery curve for city-to-coast runs."
+        },
+        {
+          "id": "turbo-awd",
+          "name": "2.5 Turbo AWD",
+          "engine_type": "Skyactiv-G Turbo",
+          "fuel": "Gasoline",
+          "horsepower": 250,
+          "torque_nm": 434,
+          "zero_to_hundred_s": 6.3,
+          "range_estimate": "640 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 360000,
+          "summary": "The most muscular small-sedan spec in the configurator, tuned for speed with composure."
+        }
+      ]
+    },
+    {
+      "id": "mx-5-rf",
+      "model_name": "Mazda MX-5 RF",
+      "year": 2022,
+      "engine_type": "Skyactiv-G 2.0",
+      "mileage_km": 18800,
+      "exterior_color": "Soul Red Crystal",
+      "body_style": "Coupe",
+      "transmission": "Manual",
+      "base_price": 4580000,
+      "availability": "Collector Stock",
+      "headline": "A small coupe-like roadster with perfect visual tension.",
+      "summary": "The MX-5 RF trades brute force for sensitivity. It is the sharpest reminder that Mazda can still build a car around feel, weight, and rhythm instead of spectacle.",
+      "certified_provenance": false,
+      "featured": false,
+      "images": [],
+      "specs": {
+        "horsepower": 181,
+        "torque_nm": 205,
+        "zero_to_hundred_s": 6.7,
+        "drivetrain": "RWD",
+        "range_estimate": "610 km est.",
+        "seats": 2
+      },
+      "configurator_variants": [
+        {
+          "id": "roadster-manual",
+          "name": "2.0 Roadster Manual",
+          "engine_type": "Skyactiv-G 2.0",
+          "fuel": "Gasoline",
+          "horsepower": 181,
+          "torque_nm": 205,
+          "zero_to_hundred_s": 6.7,
+          "range_estimate": "610 km est.",
+          "drivetrain": "RWD",
+          "price_delta": 0,
+          "summary": "The lightest-feeling spec with the most direct driver feedback."
+        },
+        {
+          "id": "rf-grand-touring",
+          "name": "RF Grand Touring",
+          "engine_type": "Skyactiv-G 2.0",
+          "fuel": "Gasoline",
+          "horsepower": 184,
+          "torque_nm": 208,
+          "zero_to_hundred_s": 6.5,
+          "range_estimate": "600 km est.",
+          "drivetrain": "RWD",
+          "price_delta": 210000,
+          "summary": "A tighter, more refined roofline with grand-tourer polish over the standard roadster."
+        },
+        {
+          "id": "club-track",
+          "name": "Club Track Pack",
+          "engine_type": "Skyactiv-G 2.0",
+          "fuel": "Gasoline",
+          "horsepower": 184,
+          "torque_nm": 210,
+          "zero_to_hundred_s": 6.3,
+          "range_estimate": "590 km est.",
+          "drivetrain": "RWD",
+          "price_delta": 320000,
+          "summary": "The most aggressive suspension and wheel tuning in the MX-5 build stack."
+        }
+      ]
+    },
+    {
+      "id": "mazada-cx70",
+      "model_name": "mazada cx70",
+      "year": 2026,
+      "engine_type": "sky ativccccccccccccc d",
+      "mileage_km": 0,
+      "exterior_color": "red",
+      "body_style": "suv",
+      "transmission": "manual",
+      "base_price": 6500000,
+      "availability": "new",
+      "headline": "suv frame",
+      "summary": "premium vehilec",
+      "certified_provenance": false,
+      "featured": false,
+      "images": [
+        "/static/uploads/7b87aa9e868d4ae3bd5d03ef2cf65319.jpg",
+        "/static/images/gallery-suv-red.svg"
+      ],
+      "specs": {
+        "horsepower": 300,
+        "torque_nm": 450,
+        "zero_to_hundred_s": 6.2,
+        "drivetrain": "AWD",
+        "range_estimate": "700 km est.",
+        "seats": 5
+      },
+      "configurator_variants": [
+        {
+          "id": "signature",
+          "name": "Signature Trim",
+          "engine_type": "sky ativccccccccccccc d",
+          "fuel": "Mazda Premium",
+          "horsepower": 300,
+          "torque_nm": 450,
+          "zero_to_hundred_s": 6.2,
+          "range_estimate": "700 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 0,
+          "summary": "A composed flagship trim with premium materials and restrained performance tuning."
+        }
+      ]
+    },
+    {
+      "id": "mazada-cx70-2",
+      "model_name": "mazada cx70",
+      "year": 2026,
+      "engine_type": "sky ativccccccccccccc d",
+      "mileage_km": 0,
+      "exterior_color": "red",
+      "body_style": "suv",
+      "transmission": "auto",
+      "base_price": 6500000,
+      "availability": "new",
+      "headline": "suv frame",
+      "summary": "ludc cbased",
+      "certified_provenance": false,
+      "featured": false,
+      "images": [],
+      "specs": {
+        "horsepower": 300,
+        "torque_nm": 450,
+        "zero_to_hundred_s": 6.2,
+        "drivetrain": "AWD",
+        "range_estimate": "700 km est.",
+        "seats": 4
+      },
+      "configurator_variants": [
+        {
+          "id": "signature",
+          "name": "Signature Trim",
+          "engine_type": "sky ativccccccccccccc d",
+          "fuel": "Mazda Premium",
+          "horsepower": 300,
+          "torque_nm": 450,
+          "zero_to_hundred_s": 6.2,
+          "range_estimate": "700 km est.",
+          "drivetrain": "AWD",
+          "price_delta": 0,
+          "summary": "A composed flagship trim with premium materials and restrained performance tuning."
+        }
+      ]
+    }
+  ]
+}

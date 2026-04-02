@@ -1,0 +1,11 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<rect x="142" y="122" width="1316" height="756" stroke="#C6A55C" stroke-opacity=".18"/>
+<rect x="276" y="344" width="1042" height="360" rx="28" fill="#151515"/>
+<rect x="320" y="388" width="520" height="214" rx="24" fill="#2C2C2C"/>
+<rect x="872" y="388" width="400" height="214" rx="24" fill="#1F1F1F"/>
+<rect x="640" y="428" width="160" height="180" rx="18" fill="#C6A55C" fill-opacity=".18"/>
+<path d="M276 520H1320" stroke="#C6A55C" stroke-opacity=".16" stroke-width="2"/>
+<text x="186" y="226" fill="#F4EFE3" font-family="Georgia, serif" font-size="62">Dark Cabin View</text>
+<text x="186" y="282" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">LOW-GLARE DASH / NIGHT INTERIOR</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<rect x="108" y="110" width="1384" height="780" stroke="#C6A55C" stroke-opacity=".24"/>
+<ellipse cx="790" cy="760" rx="460" ry="70" fill="#180507"/>
+<path d="M360 622L510 486C560 442 628 416 710 408L956 382C1038 374 1116 404 1184 454L1320 554C1364 586 1352 656 1278 656H418C360 656 330 654 332 638L360 622Z" fill="url(#a)"/>
+<circle cx="560" cy="666" r="88" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<circle cx="1110" cy="666" r="88" fill="#0F0F0F" stroke="#7F652A" stroke-width="4"/>
+<path d="M612 462H1090C1148 462 1196 490 1232 540H630C610 540 598 516 612 462Z" fill="url(#b)"/>
+<path d="M1228 572L1294 588" stroke="#A1121E" stroke-width="9" stroke-linecap="round"/>
+<text x="170" y="230" fill="#F4EFE3" font-family="Georgia, serif" font-size="64">Mazda CX Signature SUV</text>
+<text x="170" y="286" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">SOUL RED CRYSTAL / MAIN STAGE</text>
+<defs>
+<linearGradient id="a" x1="370" y1="420" x2="1200" y2="710" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2B2B2B"/><stop offset=".36" stop-color="#891625"/><stop offset=".7" stop-color="#5E1119"/><stop offset="1" stop-color="#202020"/>
+</linearGradient>
+<linearGradient id="b" x1="690" y1="430" x2="1130" y2="550" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C7B28A" stop-opacity=".42"/><stop offset=".5" stop-color="#6A747B" stop-opacity=".22"/><stop offset="1" stop-color="#11151D" stop-opacity=".08"/>
+</linearGradient>
+</defs>
+</svg>

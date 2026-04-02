@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block title %}{{ car.model_name }} in Mombasa | AutoElite Mazda{% endblock %}
+{% block meta_description %}Explore the {{ car.model_name }} at AutoElite Mombasa with a high-resolution gallery, finance estimator, and full Mazda technical specs.{% endblock %}
+{% block meta_keywords %}{{ car.model_name }}, Mazda Mombasa, luxury Mazda Kenya, Mazda detail page{% endblock %}
+
+{% block body_attrs %}
+x-data="vehicleDetailExperience({
+    car: {{ car | tojson }}
+})"
+{% endblock %}
+
+{% block content %}
+<main class="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 pb-12 pt-8 lg:px-10 lg:pb-16">
+    <section class="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
+        <div class="luxury-card">
+            <p class="eyebrow">Vehicle Detail Page</p>
+            <h1 class="section-title mt-3">{{ car.model_name }}</h1>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-white/62">{{ car.summary }}</p>
+
+            <div class="mt-8 main-stage">
+                {% if car.images %}
+                    <div
+                        x-ref="galleryTrack"
+                        class="main-stage-track"
+                        @scroll.passive="syncFromScroll($el)"
+                        @wheel="scrollGallery($event)"
+                    >
+                        {% for image in car.images %}
+                            <div class="main-stage-slide">
+                                <div class="zoom-stage aspect-[16/10] transition-opacity duration-500">
+                                    <img
+                                        src="{{ image }}"
+                                        alt="{{ car.model_name }} gallery image {{ loop.index }}"
+                                        class="cover-image zoom-image"
+                                    >
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-image-shell aspect-[16/10]">No image</div>
+                {% endif %}
+            </div>
+
+            <div x-show="car.images.length > 1" class="mt-5 flex flex-wrap items-center justify-between gap-3" x-cloak>
+                <button type="button" class="secondary-action" @click="prevImage()">Previous</button>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">
+                    <span x-text="activeImageIndex + 1"></span>
+                    /
+                    <span x-text="car.images.length"></span>
+                </p>
+                <button type="button" class="secondary-action" @click="nextImage()">Next</button>
+            </div>
+
+            <div x-show="car.images.length" class="gallery-rail mt-5" x-cloak>
+                <div class="gallery-rail-track">
+                {% for image in car.images %}
+                    <button
+                        type="button"
+                        class="thumb-frame aspect-[4/3]"
+                        :class="{ 'thumb-frame-active': activeImageIndex === {{ loop.index0 }} }"
+                        @click="scrollToIndex({{ loop.index0 }})"
+                    >
+                        <img src="{{ image }}" alt="{{ car.model_name }} thumbnail {{ loop.index }}" class="cover-image">
+                    </button>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <aside class="grid gap-6">
+            <section class="luxury-card">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="eyebrow">Inventory Overview</span>
+                    {% if car.certified_provenance %}
+                        <span class="provenance-badge provenance-inline">Certified Provenance</span>
+                    {% endif %}
+                </div>
+
+                <p class="mt-4 text-sm uppercase tracking-[0.32em] text-gold/70">{{ car.year }} / {{ car.body_style }}</p>
+                <h2 class="section-title mt-3">{{ car.headline }}</h2>
+                <p class="mt-5 text-sm leading-7 text-white/62">{{ car.summary }}</p>
+
+                <dl class="mt-8 grid gap-4 sm:grid-cols-2">
+                    <div class="detail-card">
+                        <p class="detail-label">Engine Type</p>
+                        <p class="detail-value">{{ car.engine_type }}</p>
+                    </div>
+                    <div class="detail-card">
+                        <p class="detail-label">Transmission</p>
+                        <p class="detail-value">{{ car.transmission }}</p>
+                    </div>
+                    <div class="detail-card">
+                        <p class="detail-label">Mileage</p>
+                        <p class="detail-value">{{ "{:,}".format(car.mileage_km) }} km</p>
+                    </div>
+                    <div class="detail-card">
+                        <p class="detail-label">Exterior</p>
+                        <p class="detail-value">{{ car.exterior_color }}</p>
+                    </div>
+                    <div class="detail-card">
+                        <p class="detail-label">Horsepower</p>
+                        <p class="detail-value">{{ car.specs.horsepower }} hp</p>
+                    </div>
+                    <div class="detail-card">
+                        <p class="detail-label">0-100 km/h</p>
+                        <p class="detail-value">{{ "%.1f"|format(car.specs.zero_to_hundred_s) }}s</p>
+                    </div>
+                </dl>
+
+                <div class="mt-8 flex flex-wrap items-center gap-4">
+                    <a href="/" class="secondary-action">Back to Inventory</a>
+                    <a href="/build/{{ car.id }}" class="primary-action">Build This Mazda</a>
+                    <a href="/#comparison" class="primary-action">Compare Models</a>
+                </div>
+            </section>
+
+            <section id="finance" class="luxury-card">
+                <p class="eyebrow">Finance Estimator</p>
+                <h2 class="section-title mt-3">Estimate monthly payment</h2>
+                <p class="mt-4 text-sm leading-7 text-white/62">
+                    Based on {{ car.price_label }}, a 60-month term, and a premium showroom financing rate.
+                </p>
+
+                <div class="mt-8 grid gap-5">
+                    <label class="form-field">
+                        <span>Down Payment</span>
+                        <div class="flex gap-3">
+                            <button type="button" class="secondary-action flex-1 justify-center" :class="{ 'compare-active': downPaymentRate === 0.1 }" @click="downPaymentRate = 0.1">10%</button>
+                            <button type="button" class="secondary-action flex-1 justify-center" :class="{ 'compare-active': downPaymentRate === 0.2 }" @click="downPaymentRate = 0.2">20%</button>
+                        </div>
+                    </label>
+
+                    <div class="detail-card">
+                        <p class="detail-label">Estimated Monthly Payment</p>
+                        <p class="finance-value" x-text="formatCurrency(monthlyPayment())"></p>
+                        <p class="mt-3 text-sm text-white/55">
+                            Deposit:
+                            <span x-text="formatCurrency(car.base_price * downPaymentRate)"></span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </section>
+
+    <section class="luxury-card">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <p class="eyebrow">Specification Sheet</p>
+                <h2 class="section-title mt-3">Performance in a clean, gold-lined frame</h2>
+            </div>
+            <p class="max-w-md text-sm leading-7 text-white/58">
+                Fixed-aspect image containers, restrained motion, and direct numbers keep the VDP crisp while staying inside the luxury editorial tone.
+            </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-4">
+            <div class="detail-card">
+                <p class="detail-label">Torque</p>
+                <p class="detail-value">{{ car.specs.torque_nm }} Nm</p>
+            </div>
+            <div class="detail-card">
+                <p class="detail-label">Drivetrain</p>
+                <p class="detail-value">{{ car.specs.drivetrain }}</p>
+            </div>
+            <div class="detail-card">
+                <p class="detail-label">Range</p>
+                <p class="detail-value">{{ car.specs.range_estimate }}</p>
+            </div>
+            <div class="detail-card">
+                <p class="detail-label">Seats</p>
+                <p class="detail-value">{{ car.specs.seats }}</p>
+            </div>
+        </div>
+    </section>
+
+    {% if related_cars %}
+        <section class="luxury-card">
+            <p class="eyebrow">Related Inventory</p>
+            <h2 class="section-title mt-3">Continue browsing the collection</h2>
+
+            <div class="mt-8 grid gap-4 md:grid-cols-3">
+                {% for related in related_cars %}
+                    <a href="/inventory/{{ related.id }}" class="inventory-card">
+                        <div class="card-media aspect-[16/10]">
+                            {% if related.primary_image %}
+                                <img src="{{ related.primary_image }}" alt="{{ related.model_name }}" class="cover-image">
+                            {% else %}
+                                <div class="empty-image-shell">No image</div>
+                            {% endif %}
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs uppercase tracking-[0.3em] text-gold/78">{{ related.year }} / {{ related.body_style }}</p>
+                            <h3 class="mt-4 text-2xl font-semibold text-white">{{ related.model_name }}</h3>
+                            <p class="mt-3 text-sm leading-7 text-white/60">{{ related.headline }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+</main>
+{% endblock %}

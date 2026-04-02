@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Studio | AutoElite Mazda{% endblock %}
+{% block meta_description %}Manage AutoElite's Mazda inventory, upload gallery images, and update showroom-ready vehicle data for the Mombasa market.{% endblock %}
+{% block meta_keywords %}AutoElite admin, Mazda inventory manager, Mombasa showroom CMS{% endblock %}
+
+{% block content %}
+<main class="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 pb-12 pt-8 lg:px-10 lg:pb-16">
+    {% if message %}
+        <div class="notice-pill">{{ message }}</div>
+    {% endif %}
+    {% if error %}
+        <div class="error-pill">{{ error }}</div>
+    {% endif %}
+
+    <section class="luxury-card">
+        <p class="eyebrow">Admin</p>
+        <h1 class="section-title mt-3">Create or manage Mazda inventory</h1>
+        <p class="mt-4 max-w-3xl text-sm leading-7 text-white/62">
+            Upload multiple gallery images, keep the copy clean, and manage each car without any JSON editing.
+        </p>
+
+        <form action="/admin/cars/create" method="post" enctype="multipart/form-data" class="mt-8 grid gap-5">
+            <div class="admin-grid admin-grid-wide">
+                <label class="form-field">
+                    <span>Model Name</span>
+                    <input type="text" name="model_name" required placeholder="Mazda CX-70">
+                </label>
+                <label class="form-field">
+                    <span>Year</span>
+                    <input type="number" name="year" min="2000" max="2099" required value="2026">
+                </label>
+                <label class="form-field">
+                    <span>Engine Type</span>
+                    <input type="text" name="engine_type" required placeholder="e-Skyactiv PHEV">
+                </label>
+                <label class="form-field">
+                    <span>Mileage (km)</span>
+                    <input type="number" name="mileage_km" min="0" required value="0">
+                </label>
+                <label class="form-field">
+                    <span>Exterior Color</span>
+                    <input type="text" name="exterior_color" required placeholder="Soul Red Crystal">
+                </label>
+                <label class="form-field">
+                    <span>Body Style</span>
+                    <input type="text" name="body_style" required placeholder="SUV">
+                </label>
+                <label class="form-field">
+                    <span>Transmission</span>
+                    <input type="text" name="transmission" required placeholder="Automatic">
+                </label>
+                <label class="form-field">
+                    <span>Base Price (KSh)</span>
+                    <input type="number" name="base_price" min="0" required value="6500000">
+                </label>
+                <label class="form-field">
+                    <span>Availability</span>
+                    <input type="text" name="availability" required placeholder="Certified Used">
+                </label>
+                <label class="form-field">
+                    <span>Gallery Images</span>
+                    <input type="file" name="images" accept="image/*" multiple>
+                </label>
+            </div>
+
+            <label class="form-field">
+                <span>Headline</span>
+                <input type="text" name="headline" required placeholder="Long-haul authority in a premium SUV frame.">
+            </label>
+
+            <label class="form-field">
+                <span>Summary</span>
+                <textarea name="summary" rows="4" required placeholder="Editorial summary for inventory and VDP."></textarea>
+            </label>
+
+            <div class="admin-grid admin-grid-wide">
+                <label class="form-field">
+                    <span>Horsepower</span>
+                    <input type="number" name="horsepower" min="0" required value="300">
+                </label>
+                <label class="form-field">
+                    <span>Torque (Nm)</span>
+                    <input type="number" name="torque_nm" min="0" required value="450">
+                </label>
+                <label class="form-field">
+                    <span>0-100 km/h (s)</span>
+                    <input type="number" name="zero_to_hundred_s" min="0" step="0.1" required value="6.2">
+                </label>
+                <label class="form-field">
+                    <span>Drivetrain</span>
+                    <input type="text" name="drivetrain" required value="AWD">
+                </label>
+                <label class="form-field">
+                    <span>Range Estimate</span>
+                    <input type="text" name="range_estimate" required value="700 km est.">
+                </label>
+                <label class="form-field">
+                    <span>Seats</span>
+                    <input type="number" name="seats" min="1" required value="5">
+                </label>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-5">
+                <label class="inline-flex items-center gap-3 text-sm text-white/70">
+                    <input type="checkbox" name="featured" class="h-4 w-4 rounded border-gold/30 bg-transparent text-ember focus:ring-ember">
+                    Set as featured
+                </label>
+                <label class="inline-flex items-center gap-3 text-sm text-white/70">
+                    <input type="checkbox" name="certified_provenance" class="h-4 w-4 rounded border-gold/30 bg-transparent text-ember focus:ring-ember">
+                    Certified provenance
+                </label>
+                <button type="submit" class="primary-action">Create Car</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="grid gap-6">
+        {% for car in cars %}
+            <article class="luxury-card">
+                <div class="flex flex-col gap-4 border-b border-gold/12 pb-6 md:flex-row md:items-end md:justify-between">
+                    <div>
+                        <p class="eyebrow">Existing Vehicle</p>
+                        <h2 class="section-title mt-3">{{ car.model_name }}</h2>
+                        <p class="mt-4 text-sm leading-7 text-white/60">{{ car.headline }}</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.28em] text-white/45">
+                        <span>{{ car.year }}</span>
+                        <span>{{ car.body_style }}</span>
+                        <span>{{ car.image_count }} images</span>
+                        {% if car.featured %}
+                            <span class="pill-highlight">Featured</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <form action="/admin/cars/{{ car.id }}/update" method="post" enctype="multipart/form-data" class="mt-8 grid gap-5">
+                    <div class="admin-grid admin-grid-wide">
+                        <label class="form-field">
+                            <span>Model Name</span>
+                            <input type="text" name="model_name" required value="{{ car.model_name }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Year</span>
+                            <input type="number" name="year" min="2000" max="2099" required value="{{ car.year }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Engine Type</span>
+                            <input type="text" name="engine_type" required value="{{ car.engine_type }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Mileage (km)</span>
+                            <input type="number" name="mileage_km" min="0" required value="{{ car.mileage_km }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Exterior Color</span>
+                            <input type="text" name="exterior_color" required value="{{ car.exterior_color }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Body Style</span>
+                            <input type="text" name="body_style" required value="{{ car.body_style }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Transmission</span>
+                            <input type="text" name="transmission" required value="{{ car.transmission }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Base Price (KSh)</span>
+                            <input type="number" name="base_price" min="0" required value="{{ car.base_price }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Availability</span>
+                            <input type="text" name="availability" required value="{{ car.availability }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Add Gallery Images</span>
+                            <input type="file" name="images" accept="image/*" multiple>
+                        </label>
+                    </div>
+
+                    <div class="form-field">
+                        <span>Current Gallery</span>
+                        {% if car.images %}
+                            <div class="admin-gallery-grid">
+                                {% for image in car.images %}
+                                    <div class="admin-gallery-item">
+                                        <img src="{{ image }}" alt="{{ car.model_name }} image {{ loop.index }}" class="cover-image">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-image-shell empty-image-shell-small">No image</div>
+                        {% endif %}
+                    </div>
+
+                    <label class="form-field">
+                        <span>Headline</span>
+                        <input type="text" name="headline" required value="{{ car.headline }}">
+                    </label>
+
+                    <label class="form-field">
+                        <span>Summary</span>
+                        <textarea name="summary" rows="4" required>{{ car.summary }}</textarea>
+                    </label>
+
+                    <div class="admin-grid admin-grid-wide">
+                        <label class="form-field">
+                            <span>Horsepower</span>
+                            <input type="number" name="horsepower" min="0" required value="{{ car.specs.horsepower }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Torque (Nm)</span>
+                            <input type="number" name="torque_nm" min="0" required value="{{ car.specs.torque_nm }}">
+                        </label>
+                        <label class="form-field">
+                            <span>0-100 km/h (s)</span>
+                            <input type="number" name="zero_to_hundred_s" min="0" step="0.1" required value="{{ '%.1f'|format(car.specs.zero_to_hundred_s) }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Drivetrain</span>
+                            <input type="text" name="drivetrain" required value="{{ car.specs.drivetrain }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Range Estimate</span>
+                            <input type="text" name="range_estimate" required value="{{ car.specs.range_estimate }}">
+                        </label>
+                        <label class="form-field">
+                            <span>Seats</span>
+                            <input type="number" name="seats" min="1" required value="{{ car.specs.seats }}">
+                        </label>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-wrap items-center gap-5">
+                            <label class="inline-flex items-center gap-3 text-sm text-white/70">
+                                <input type="checkbox" name="featured" class="h-4 w-4 rounded border-gold/30 bg-transparent text-ember focus:ring-ember" {% if car.featured %}checked{% endif %}>
+                                Set as featured
+                            </label>
+                            <label class="inline-flex items-center gap-3 text-sm text-white/70">
+                                <input type="checkbox" name="certified_provenance" class="h-4 w-4 rounded border-gold/30 bg-transparent text-ember focus:ring-ember" {% if car.certified_provenance %}checked{% endif %}>
+                                Certified provenance
+                            </label>
+                            <label class="inline-flex items-center gap-3 text-sm text-white/70">
+                                <input type="checkbox" name="clear_gallery" class="h-4 w-4 rounded border-gold/30 bg-transparent text-ember focus:ring-ember">
+                                Replace existing gallery
+                            </label>
+                        </div>
+                        <button type="submit" class="primary-action">Save Changes</button>
+                    </div>
+                </form>
+
+                <form action="/admin/cars/{{ car.id }}/delete" method="post" class="mt-6" onsubmit="return confirm('Delete {{ car.model_name }}?');">
+                    <button type="submit" class="danger-action">Delete Car</button>
+                </form>
+            </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

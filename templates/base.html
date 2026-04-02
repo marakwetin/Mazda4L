@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AutoElite Mazda | Luxury Mazda in Mombasa{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}AutoElite is a luxury Mazda showroom in Mombasa with filtered inventory, high-end detail pages, and dealership-grade comparison tools.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Mazda Mombasa, luxury Mazda Kenya, Mazda inventory Mombasa, AutoElite showroom{% endblock %}">
+    <meta property="og:title" content="{{ self.title() | striptags | trim }}">
+    <meta property="og:description" content="{{ self.meta_description() | striptags | trim }}">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: "#050505",
+                        gold: "#c6a55c",
+                        ember: "#a1121e",
+                        mist: "#f4efe3",
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
+</head>
+<body {% block body_attrs %}{% endblock %} class="min-h-screen bg-ink text-white antialiased">
+    <div class="page-background"></div>
+    <div class="architect-grid" aria-hidden="true"></div>
+
+    <div class="relative isolate">
+        <header class="site-header">
+            <div class="mx-auto flex w-full max-w-7xl items-center gap-6 px-6 py-4 lg:px-10">
+                <a href="/" class="brand-lockup">
+                    <span class="brand-mark">AE</span>
+                    <span>
+                        <strong>AutoElite</strong>
+                        <span>Mazda Performance House</span>
+                    </span>
+                </a>
+
+                <nav class="hidden items-center gap-7 text-xs uppercase tracking-[0.34em] text-white/62 md:flex">
+                    <a href="{{ nav_links.inventory }}">Inventory</a>
+                    <a href="{{ nav_links.customization_lab }}">Customization Lab</a>
+                    <a href="{{ nav_links.contact }}">Contact</a>
+                </nav>
+
+                <div class="ml-auto flex items-center gap-3">
+                    {% if page_kind == "inventory" %}
+                        <label class="search-shell">
+                            <span class="sr-only">Search inventory</span>
+                            <input
+                                type="search"
+                                placeholder="Search model, color, engine"
+                                x-model="searchQuery"
+                            >
+                        </label>
+                    {% else %}
+                        <form action="/" method="get" class="search-shell">
+                            <span class="sr-only">Search inventory</span>
+                            <input
+                                type="search"
+                                name="q"
+                                placeholder="Search inventory"
+                                value="{{ initial_query if initial_query is defined else '' }}"
+                            >
+                        </form>
+                    {% endif %}
+
+                    {% if page_kind != "admin" %}
+                        <a href="/admin" class="secondary-action">Admin</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        {% if breadcrumbs %}
+            <div class="mx-auto w-full max-w-7xl px-6 pt-6 lg:px-10">
+                <nav aria-label="Breadcrumb" class="breadcrumb-shell">
+                    {% for crumb in breadcrumbs %}
+                        {% if crumb.href %}
+                            <a href="{{ crumb.href }}" class="breadcrumb-link">{{ crumb.label }}</a>
+                        {% else %}
+                            <span class="breadcrumb-current">{{ crumb.label }}</span>
+                        {% endif %}
+                        {% if not loop.last %}
+                            <span class="breadcrumb-divider">/</span>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+        {% endif %}
+
+        <div class="page-stage transition-opacity duration-300">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer id="contact" class="site-footer">
+            <div class="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 lg:grid-cols-4 lg:px-10">
+                <section>
+                    <p class="eyebrow">About</p>
+                    <h2 class="footer-title mt-4">AutoElite</h2>
+                    <p class="mt-4 text-sm leading-7 text-white/60">
+                        AutoElite curates premium Mazda inventory with editorial presentation, transparent provenance, and the calm confidence of a private showroom.
+                    </p>
+                </section>
+
+                <section>
+                    <p class="eyebrow">Quick Links</p>
+                    <ul class="mt-4 space-y-4 text-sm text-white/62">
+                        <li><a href="/">Trading-In Info</a></li>
+                        <li><a href="/#comparison">Finance Calculator</a></li>
+                        <li><a href="/">Service Booking</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p class="eyebrow">Legal</p>
+                    <ul class="mt-4 space-y-4 text-sm text-white/62">
+                        <li><a href="/">Privacy Policy</a></li>
+                        <li><a href="/">Terms of Sale</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p class="eyebrow">Social / Contact</p>
+                    <div class="mt-4 space-y-4 text-sm text-white/62">
+                        <p>+254 722 440 900</p>
+                        <p>Mombasa HQ, Nyali Bridge View, Mombasa, Kenya</p>
+                        <div class="flex items-center gap-3">
+                            <span class="social-icon">IG</span>
+                            <span class="social-icon">WA</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

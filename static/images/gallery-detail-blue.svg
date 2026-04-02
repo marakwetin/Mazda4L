@@ -1,0 +1,13 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1000" fill="#050505"/>
+<rect x="160" y="120" width="1280" height="760" stroke="#C6A55C" stroke-opacity=".18"/>
+<path d="M266 672C452 500 654 402 992 342C1076 328 1164 332 1330 358" stroke="url(#a)" stroke-width="170" stroke-linecap="round"/>
+<path d="M910 416C1000 404 1090 420 1170 456" stroke="#F4EFE3" stroke-opacity=".18" stroke-width="10" stroke-linecap="round"/>
+<text x="184" y="228" fill="#F4EFE3" font-family="Georgia, serif" font-size="62">Deep Crystal Blue Detail</text>
+<text x="184" y="282" fill="#C6A55C" font-family="Arial, sans-serif" font-size="18" letter-spacing="8">METALLIC FLAKE / LATE EVENING REFLECTION</text>
+<defs>
+<linearGradient id="a" x1="284" y1="652" x2="1270" y2="390" gradientUnits="userSpaceOnUse">
+<stop stop-color="#10233F"/><stop offset=".38" stop-color="#1A4579"/><stop offset=".7" stop-color="#2F78C0"/><stop offset="1" stop-color="#16345C"/>
+</linearGradient>
+</defs>
+</svg>
